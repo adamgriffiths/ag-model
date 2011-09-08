@@ -47,8 +47,7 @@ class MY_Model extends CI_Model
 	*/
 	public function list_items()
 	{
-		$query = $this->db->get($this->table);
-		return $query->result_array();
+		return $this->db->get($this->table)->result_array();
 	}
 	
 	
@@ -61,12 +60,7 @@ class MY_Model extends CI_Model
 	*/
 	public function add($data)
 	{
-		if($this->db->insert($this->table, $data))
-		{
-			return TRUE;
-		}
-		
-		return FALSE;
+		return $this->db->insert($this->table, $data);
 	}
 	
 	
@@ -80,12 +74,7 @@ class MY_Model extends CI_Model
 	*/
 	public function edit($id, $data)
 	{
-		if($this->db->update($this->table, $data, array('id' => $id)));
-		{
-			return TRUE;
-		}
-		
-		return FALSE;
+		return $this->db->update($this->table, $data, array('id' => $id));
 	}
 	
 	
@@ -98,12 +87,7 @@ class MY_Model extends CI_Model
 	*/
 	public function delete($id)
 	{
-		if($this->db->delete($this->table, array('id' => $id)))
-		{
-			return TRUE;
-		}
-		
-		return FALSE;
+		return $this->db->delete($this->table, array('id' => $id));
 	}
 	
 	
@@ -116,8 +100,7 @@ class MY_Model extends CI_Model
 	*/
 	public function get_by_id($id)
 	{
-		$query = $this->db->where('id', $id)->get($this->table);
-		return $query->row_array();
+		return $this->db->where('id', $id)->get($this->table)->row_array();
 	}
 }
 
